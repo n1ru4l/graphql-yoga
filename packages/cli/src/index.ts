@@ -32,25 +32,22 @@ export function graphqlYoga() {
       })
     },
     async ({ project = 'default' }) => {
+      console.info(`Loading GraphQL Config from ${process.cwd()}`)
       const config = await loadConfig({
         extensions: [YogaExtensions],
       })
+      console.log(`Loading project: ${project}`)
       const projectConfig = config?.getProject(project)
+      console.log(`Loading GraphQL Schema of ${project}`)
       const schema = await projectConfig?.getSchema()
       if (!schema) {
         throw new Error(`Could not find schema for project ${project}`)
       }
-      const documents = (await projectConfig?.getDocuments()) || []
-      const defaultQuery: string = documents?.reduce(
-        (allQueries, source) => `${allQueries}\n${source.rawSDL}`,
-        '',
-      )
+      console.log(`Building GraphQL Server`)
       const graphQLServer = new GraphQLServer({
         schema,
-        graphiql: {
-          defaultQuery,
-        },
       })
+      console.log(`Starting GraphQL Server`)
       await graphQLServer.start()
 
       registerTerminateHandler(() => {
