@@ -4,6 +4,7 @@ import {
   shouldRenderGraphiQL,
   renderGraphiQL,
   ProcessRequestOptions,
+  RenderGraphiQLOptions,
 } from '@ardatan/graphql-helix'
 import { BaseGraphQLServer, GraphQLServerCORSOptions } from '@graphql-yoga/core'
 import { Response } from 'cross-undici-fetch'
@@ -55,8 +56,8 @@ export async function handleRequest<TContext>(
       return handleOptions(request, this.corsOptionsFactory)
     }
 
-    if (shouldRenderGraphiQL(request)) {
-      const graphiQLBody = renderGraphiQL()
+    if (shouldRenderGraphiQL(request) && this.graphiql) {
+      const graphiQLBody = renderGraphiQL(this.graphiql)
       return new Response(graphiQLBody, {
         headers: {
           'Content-Type': 'text/html',
@@ -91,3 +92,5 @@ export async function handleRequest<TContext>(
     return response
   }
 }
+
+export type GraphiQLOptions = RenderGraphiQLOptions

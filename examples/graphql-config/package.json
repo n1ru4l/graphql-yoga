@@ -1,0 +1,12 @@
+{
+    "name": "graphql-config-example",
+    "private": true,
+    "version": "0.0.0",
+    "scripts": {
+        "start": "yoga"
+    },
+    "dependencies": {
+        "@graphql-yoga/cli": "0.0.0",
+        "graphql": "^16.1.0"
+    }
+}

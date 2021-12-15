@@ -1,0 +1,2 @@
+schema: ./schema.js
+documents: ping-server.graphql
