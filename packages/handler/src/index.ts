@@ -56,6 +56,7 @@ export async function handleRequest<TContext>(
       return handleOptions(request, this.corsOptionsFactory)
     }
 
+    this.logger.debug(`Checking if GraphiQL Request`)
     if (shouldRenderGraphiQL(request) && this.graphiql) {
       const graphiQLBody = renderGraphiQL(this.graphiql)
       return new Response(graphiQLBody, {
@@ -66,19 +67,23 @@ export async function handleRequest<TContext>(
       })
     }
 
+    this.logger.debug(`Extracting GraphQL Parameters`)
     const graphqlParams = await getGraphQLParameters(request)
 
     if (this.getEnveloped) {
+      this.logger.debug(`Calling Envelop`)
       const proxy = this.getEnveloped({ request })
       const processRequestOptions: ProcessRequestOptions<any, any> = {
         request,
         ...graphqlParams,
         ...proxy,
       }
-      return processRequest(processRequestOptions)
+      this.logger.debug(`Processing Request by Helix`)
+      return await processRequest(processRequestOptions)
     }
 
-    return processRequest({
+    this.logger.debug(`Processing Request by Helix`)
+    return await processRequest({
       request,
       schema: this.schema,
       ...graphqlParams,

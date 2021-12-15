@@ -13,7 +13,9 @@ function registerTerminateHandler(callback: (eventName: string) => void) {
 }
 
 export const YogaExtensions: GraphQLExtensionDeclaration = (api) => {
-  const codeFileLoader = new CodeFileLoader()
+  const codeFileLoader = new CodeFileLoader({
+    noPluck: true,
+  })
   api.loaders.schema.register(codeFileLoader)
   api.loaders.documents.register(codeFileLoader)
   return {

@@ -1,2 +1,10 @@
-schema: ./schema.js
-documents: ping-server.graphql
+schema:
+  - ./src/schema.ts:
+      require: ts-node/register
+extensions:
+  codegen:
+    generates:
+      ./src/resolver-types.ts:
+        plugins:
+          - typescript
+          - typescript-resolvers
