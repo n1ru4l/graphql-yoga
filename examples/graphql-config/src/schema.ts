@@ -21,7 +21,6 @@ const resolvers: Resolvers = {
   Subscription: {
     count: {
       subscribe: async function* (_, { to }) {
-        console.log('Geldi')
         for (let i = 0; i <= to; i++) {
           yield { count: i };
           console.log({ count: i })
