@@ -187,14 +187,6 @@ export class GraphQLServer<TContext> extends BaseGraphQLServer<TContext> {
 }
 
 export type { GraphQLServerOptions } from './types'
-export {
-  Plugin,
-  enableIf,
-  envelop,
-  useEnvelop,
-  usePayloadFormatter,
-  useExtendContext,
-  useTiming,
-  EnvelopError as GraphQLServerError,
-} from '@envelop/core'
-export { GraphQLBlob } from '@graphql-yoga/core'
+export * from '@envelop/core'
+export { EnvelopError as GraphQLServerError } from '@envelop/core'
+export { GraphQLBlob, GraphQLFile } from '@graphql-yoga/core'
