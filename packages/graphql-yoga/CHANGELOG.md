@@ -1,5 +1,19 @@
 # graphql-yoga
 
+## 2.0.0-alpha.12
+
+### Minor Changes
+
+- dcaea56: add missing tslib dependency
+
+### Patch Changes
+
+- Updated dependencies [dcaea56]
+- Updated dependencies [f5f06f4]
+- Updated dependencies [dcaea56]
+- Updated dependencies [dcaea56]
+  - @graphql-yoga/node@0.1.0-alpha.4
+
 ## 2.0.0-alpha.11
 
 ### Patch Changes

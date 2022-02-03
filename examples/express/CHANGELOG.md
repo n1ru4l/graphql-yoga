@@ -1,5 +1,15 @@
 # express-example
 
+## 0.0.1-alpha.11
+
+### Patch Changes
+
+- Updated dependencies [dcaea56]
+- Updated dependencies [f5f06f4]
+- Updated dependencies [dcaea56]
+- Updated dependencies [dcaea56]
+  - @graphql-yoga/node@0.1.0-alpha.4
+
 ## 0.0.1-alpha.10
 
 ### Patch Changes
